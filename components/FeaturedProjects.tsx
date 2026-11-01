@@ -3,10 +3,10 @@ import Link from "next/link";
 const projects = [
   { 
     id: 1, 
-    title: "Website E-Commerce", 
-    description: "Platform jual beli online dengan fitur keranjang belanja dan payment gateway.", 
-    tech: ["Next.js", "Tailwind", "Stripe"],
-    image: "https://picsum.photos/seed/toko/600/400"
+    title: "WhatsApp Automation Bot", 
+    description: "Bot WhatsApp cerdas untuk membalas pesan otomatis, dibuat menggunakan Node.js dan berjalan 24/7 di cloud.", 
+    tech: ["Node.js", "WhatsApp API", "Render"],
+    image: "https://picsum.photos/seed/botwa/600/400" 
   },
   { 
     id: 2, 
@@ -41,7 +41,6 @@ export default function FeaturedProjects() {
         {projects.map((project) => (
           <div key={project.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300 group flex flex-col">
             <div className="w-full h-48 overflow-hidden relative bg-slate-800">
-              {/* Baris sakti di bawah ini menghilangkan garis merah Next.js */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
             </div>
