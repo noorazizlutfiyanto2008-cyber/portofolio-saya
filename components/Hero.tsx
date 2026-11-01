@@ -9,11 +9,11 @@ export default function Hero() {
       <h1 className="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 text-white">
         Halo, saya <span className="text-blue-500">Noor Aziz Lutfiyanto</span>
         <br />
-        Seorang Web Developer & Designer
+        Seorang Web Developer & Bot Creator
       </h1>
       <p className="text-slate-400 text-lg sm:text-xl max-w-2xl mb-10 leading-relaxed">
         Saya membantu bisnis dan individu menciptakan pengalaman digital yang menarik, 
-        fungsional, dan berpusat pada pengguna.
+        fungsional, dan berpusat pada pengguna. Spesialisasi saya adalah membangun web modern dan bot otomatis.
       </p>
       <div className="flex flex-col sm:flex-row gap-4">
         <Link href="/projects" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-lg font-semibold transition-all">

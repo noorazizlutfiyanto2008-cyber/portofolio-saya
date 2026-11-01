@@ -49,32 +49,42 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+          {/* Kolom Kiri: Info Kontak */}
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Informasi Kontak</h3>
               <p className="text-slate-400 mb-2">Silakan hubungi saya melalui:</p>
               <ul className="space-y-4 text-slate-300">
                 <li className="flex items-center gap-3">
-                  <span className="text-blue-500">✉️</span> emailkamu@gmail.com
+                  <span className="text-blue-500">✉️</span> 
+                  <a href="mailto:noorazizlutfiyanto2008@gmail.com" className="hover:text-blue-400 transition-colors">
+                    noorazizlutfiyanto2008@gmail.com
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="text-blue-500">📱</span> +62 812 3456 7890
+                  <span className="text-blue-500">📱</span> 
+                  {/* WA SUDAH DIUBAH KE FORMAT 62 */}
+                  <a href="https://wa.me/62882020821793" target="_blank" rel="noreferrer" className="hover:text-blue-400 transition-colors">
+                    +62 882-0208-21793
+                  </a>
                 </li>
                 <li className="flex items-center gap-3">
-                  <span className="text-blue-500">📍</span> Jakarta, Indonesia
+                  <span className="text-blue-500">📍</span> Indonesia
                 </li>
               </ul>
             </div>
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Media Sosial</h3>
               <div className="flex gap-4">
-                <a href="#" className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-all border border-slate-700">LinkedIn</a>
-                <a href="#" className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-all border border-slate-700">GitHub</a>
-                <a href="#" className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-all border border-slate-700">Instagram</a>
+                <a href="#" target="_blank" className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-all border border-slate-700">LinkedIn</a>
+                <a href="https://github.com/noorazizlutfiyanto2008-cyber" target="_blank" className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-all border border-slate-700">GitHub</a>
+                {/* LINK IG SUDAH DIMASUKKAN */}
+                <a href="https://www.instagram.com/azzltfy" target="_blank" rel="noreferrer" className="bg-slate-800 hover:bg-slate-700 text-white px-4 py-2 rounded-lg text-sm transition-all border border-slate-700">Instagram</a>
               </div>
             </div>
           </div>
 
+          {/* Kolom Kanan: Formulir */}
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
             <form onSubmit={handleSubmit} className="space-y-6">
               
