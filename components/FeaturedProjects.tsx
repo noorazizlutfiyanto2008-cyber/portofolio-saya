@@ -3,60 +3,56 @@ import Link from "next/link";
 const projects = [
   { 
     id: 1, 
-    title: "WhatsApp Automation Bot", 
-    description: "Bot WhatsApp cerdas untuk membalas pesan otomatis, dibuat menggunakan Node.js dan berjalan 24/7 di cloud.", 
+    title: "WhatsApp Finance Bot", 
+    description: "Bot WhatsApp cerdas untuk mencatat pengeluaran, pemasukan, dan mengatur keuangan pribadi secara otomatis. Dibuat menggunakan Node.js dan berjalan 24/7 di cloud (Render) agar selalu siap menerima pesan.", 
     tech: ["Node.js", "WhatsApp API", "Render"],
-    image: "https://picsum.photos/seed/botwa/600/400" 
-  },
-  { 
-    id: 2, 
-    title: "Company Profile Startup", 
-    description: "Desain web responsif dan modern untuk perusahaan teknologi finansial.", 
-    tech: ["React", "Figma", "Framer Motion"],
-    image: "https://picsum.photos/seed/kantor/600/400"
-  },
-  { 
-    id: 3, 
-    title: "Aplikasi Manajemen Tugas", 
-    description: "Aplikasi produktivitas untuk melacak tugas harian dengan antarmuka bersih.", 
-    tech: ["Vue.js", "Firebase", "Tailwind"],
-    image: "https://picsum.photos/seed/aplikasi/600/400"
+    image: "https://picsum.photos/seed/finance/800/400" 
   },
 ];
 
 export default function FeaturedProjects() {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto">
+    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <div className="flex justify-between items-end mb-12">
         <div>
           <h2 className="text-3xl font-bold mb-2 text-white">Sorotan Proyek</h2>
-          <p className="text-slate-400">Beberapa karya terbaik yang pernah saya buat.</p>
+          <p className="text-slate-400">Karya terbaik yang pernah saya buat.</p>
         </div>
         <Link href="/projects" className="hidden sm:block text-blue-500 hover:text-blue-400 font-medium group">
-          Lihat Semua <span className="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+          Lihat Detail <span className="inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
         </Link>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8">
         {projects.map((project) => (
-          <div key={project.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300 group flex flex-col">
-            <div className="w-full h-48 overflow-hidden relative bg-slate-800">
+          <div key={project.id} className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-blue-500/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-300 group flex flex-col md:flex-row">
+            
+            {/* Bagian Gambar (Kiri) */}
+            <div className="w-full md:w-1/2 h-64 md:h-auto overflow-hidden relative bg-slate-800">
               {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500" />
+              <img src={project.image} alt={project.title} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500" />
             </div>
             
-            <div className="p-6 flex flex-col flex-grow">
-              <h3 className="text-xl font-bold mb-2 text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
-              <p className="text-slate-400 text-sm mb-6 line-clamp-2 flex-grow">{project.description}</p>
+            {/* Bagian Teks (Kanan) */}
+            <div className="p-8 flex flex-col justify-center w-full md:w-1/2">
+              <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-blue-400 transition-colors">{project.title}</h3>
+              <p className="text-slate-400 text-sm mb-6 leading-relaxed">{project.description}</p>
               
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tech.map((tech, index) => (
-                  <span key={index} className="text-xs font-medium bg-slate-800 border border-slate-700 text-slate-300 px-2.5 py-1 rounded-md">{tech}</span>
+                  <span key={index} className="text-xs font-medium bg-slate-800 border border-slate-700 text-slate-300 px-3 py-1.5 rounded-md">{tech}</span>
                 ))}
               </div>
             </div>
+
           </div>
         ))}
+      </div>
+      
+      <div className="mt-8 text-center sm:hidden">
+        <Link href="/projects" className="text-blue-500 hover:text-blue-400 font-medium">
+          Lihat Detail Proyek &rarr;
+        </Link>
       </div>
     </section>
   );
