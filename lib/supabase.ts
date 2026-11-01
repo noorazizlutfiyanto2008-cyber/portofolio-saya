@@ -1,7 +1,7 @@
-import { createClient } from '@supabase/supabase-js';
+import { createBrowserClient } from '@supabase/ssr'
 
-// SEMENTARA KITA TULIS LANGSUNG DI SINI
+// KITA TULIS LANGSUNG BIAR LOKAL BEBAS ERROR
 const supabaseUrl = "https://ydhfpommjtfgtvtayabv.supabase.co";
 const supabaseAnonKey = "sb_publishable_YTEtAmauuynmFvcgqUP7LA_YNyxsqvY";
 
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export const supabase = createBrowserClient(supabaseUrl, supabaseAnonKey)
