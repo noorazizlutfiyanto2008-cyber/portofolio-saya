@@ -1,6 +1,41 @@
+"use client";
+
 import Navbar from "@/components/Navbar";
+import { useState } from "react";
+import { supabase } from "@/lib/supabase";
 
 export default function ContactPage() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  
+  const [loading, setLoading] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [error, setError] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setSuccess(false);
+    setError("");
+
+    const { error } = await supabase
+      .from("message")
+      .insert([{ name: name, email: email, message: message }]);
+
+    if (error) {
+      console.error(error);
+      setError("Gagal mengirim pesan. Silakan coba lagi.");
+    } else {
+      setSuccess(true);
+      setName("");
+      setEmail("");
+      setMessage("");
+    }
+    
+    setLoading(false);
+  };
+
   return (
     <main className="min-h-screen bg-slate-950">
       <Navbar />
@@ -14,7 +49,6 @@ export default function ContactPage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          {/* Kolom Kiri: Info Kontak */}
           <div className="space-y-8">
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Informasi Kontak</h3>
@@ -31,7 +65,6 @@ export default function ContactPage() {
                 </li>
               </ul>
             </div>
-
             <div>
               <h3 className="text-xl font-bold text-white mb-4">Media Sosial</h3>
               <div className="flex gap-4">
@@ -42,14 +75,28 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Kolom Kanan: Formulir */}
           <div className="bg-slate-900 border border-slate-800 rounded-xl p-8">
-            <form className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              
+              {success && (
+                <div className="bg-green-500/10 border border-green-500 text-green-400 px-4 py-3 rounded-lg text-sm">
+                  Pesan berhasil dikirim! Terima kasih sudah menghubungi.
+                </div>
+              )}
+              {error && (
+                <div className="bg-red-500/10 border border-red-500 text-red-400 px-4 py-3 rounded-lg text-sm">
+                  {error}
+                </div>
+              )}
+
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-slate-300 mb-2">Nama Lengkap</label>
                 <input 
                   type="text" 
                   id="name" 
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  required
                   className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="Masukkan nama kamu"
                 />
@@ -60,6 +107,9 @@ export default function ContactPage() {
                 <input 
                   type="email" 
                   id="email" 
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
                   className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors"
                   placeholder="nama@email.com"
                 />
@@ -70,16 +120,20 @@ export default function ContactPage() {
                 <textarea 
                   id="message" 
                   rows={4}
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
                   className="w-full bg-slate-950 border border-slate-700 rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none"
                   placeholder="Tulis pesanmu di sini..."
                 ></textarea>
               </div>
 
               <button 
-                type="button" 
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-4 rounded-lg transition-all"
+                type="submit" 
+                disabled={loading}
+                className={`w-full font-bold py-3 px-4 rounded-lg transition-all text-white ${loading ? 'bg-slate-600 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'}`}
               >
-                Kirim Pesan
+                {loading ? "Mengirim..." : "Kirim Pesan"}
               </button>
             </form>
           </div>
