@@ -1,6 +1,6 @@
 @import "tailwindcss";
 
 body {
-  background-color: #020617; /* Warna gelap (slate-950) */
-  color: #f8fafc; /* Warna teks putih (slate-50) */
+  background-color: #020617; /* Warna slate-950 */
+  color: #f8fafc; /* Warna slate-50 */
 }
